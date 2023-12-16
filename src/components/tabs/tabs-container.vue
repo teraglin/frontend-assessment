@@ -5,6 +5,7 @@
       :key="index"
       :title="tab.title"
       :content="tab.content"
+      :image="image"
     ></tab-component>
   </div>
 </template>
@@ -18,18 +19,19 @@ export default {
   },
   props: {
     tabs: Array,
+    image: String,
   },
 };
 </script>
 
 <style>
 #tabs-container {
-  border: 1px solid cyan;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 50px;
+  padding: 50px;
 }
 </style>

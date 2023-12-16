@@ -1,7 +1,11 @@
 <template>
-  <div id="hero-title">
-    <h1 class="title">{{ title }}</h1>
-    <p class="subtitle">{{ subtitle }}</p>
+  <div id="hero">
+    <img class="hero__image hero__image--mobile" :src="mobileImage" />
+    <img class="hero__image hero__image--desktop" :src="desktopImage" />
+    <div class="hero-content">
+      <h1 class="hero__title">{{ title }}</h1>
+      <p class="hero__subtitle">{{ subtitle }}</p>
+    </div>
   </div>
 </template>
 
@@ -11,26 +15,49 @@ export default {
   props: {
     title: String,
     subtitle: String,
+    mobileImage: String,
+    desktopImage: String,
   },
 };
+console.log("hello");
 </script>
 
 <style>
-#hero-title {
-  flex-grow: 1;
-  color: #fff;
-  background: grey;
+#hero {
+  position: relative;
+  max-height: 650px; /* Look at removing this */
+}
+.hero__image {
   max-width: 1920px;
-  height: 650px;
+  width: 100%;
+}
+.hero__image--mobile {
+  display: none;
+  @media (min-width: 600px) {
+    display: block;
+  }
+}
+.hero__image--desktop {
+  @media (min-width: 600px) {
+    display: none;
+  }
+}
+.hero-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.title {
+.hero-content__title {
   margin: 0;
 }
-.subtitle {
+.hero-content__subtitle {
   margin: 0;
 }
 </style>
