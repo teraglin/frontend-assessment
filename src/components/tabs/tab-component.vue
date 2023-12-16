@@ -1,8 +1,8 @@
 <template>
-  <div id="tab-component">
-    <div class="image"></div>
-    <div v-html="content"></div>
-    <button>Read More</button>
+  <div id="tab">
+    <img class="tab__image" :src="image" />
+    <div class="tab__content" v-html="content"></div>
+    <button class="tab__button">Read More</button>
   </div>
 </template>
 
@@ -12,22 +12,25 @@ export default {
   props: {
     title: String,
     content: String,
+    image: String,
   },
 };
 </script>
 
 <style>
-#tab-component {
-  border: 1px solid black;
-  padding: 10px;
+#tab {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
   min-width: 400px;
   max-width: 400px;
 }
-.image {
+.tab__image {
   background: grey;
-  min-width: 400px;
+  width: 100%;
   max-width: 400px;
-  min-height: 300px;
-  max-height: 300px;
+}
+.tab__content > p {
+  text-align: center;
 }
 </style>
