@@ -3,18 +3,24 @@
     title="Hello Developer!"
     subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
   ></hero-title>
-  <tabs-container></tabs-container>
+  <tabs-container :tabs="tabsData"></tabs-container>
 </template>
 
 <script>
 import HeroTitle from "./components/hero-title.vue";
 import TabsContainer from "./components/tabs/tabs-container.vue";
+const tabsData = require("./data/data.json");
 
 export default {
   name: "App",
   components: {
     HeroTitle,
     TabsContainer,
+  },
+  data() {
+    return {
+      tabsData: tabsData,
+    };
   },
 };
 </script>
