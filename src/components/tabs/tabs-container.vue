@@ -6,6 +6,9 @@
       :title="tab.title"
       :content="tab.content"
       :image="getImage"
+      :index="index"
+      :showContent="index === selectedTab"
+      @new-selected-tab="updateSelectedTab"
     ></tab-component>
   </div>
 </template>
@@ -20,10 +23,28 @@ export default {
   props: {
     tabs: Array,
     defaultImage: String,
+    index: Number,
+  },
+  data() {
+    return {
+      selectedTab: 0,
+    };
+  },
+  methods: {
+    updateSelectedTab(index) {
+      // return console.log(index);
+      return (this.selectedTab = index);
+    },
+    handleShowContent(index) {
+      return index === this.slectedTab;
+    },
   },
   computed: {
     getImage() {
       return this.tabs.image ? this.tabs.image : this.defaultImage;
+    },
+    showContent(index) {
+      return this.handleShowContent(index);
     },
   },
 };
@@ -35,7 +56,7 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 50px;
   padding: 50px;
 }
