@@ -24,7 +24,7 @@ export default {
 
 .home__link {
   height: 50px;
-  background: var(--palette-black);
+  background: var(--palette-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,5 +34,12 @@ export default {
   text-decoration: none;
   border-radius: 10px;
   cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  }
+  &:active {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  }
 }
 </style>

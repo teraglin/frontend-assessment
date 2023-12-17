@@ -26,7 +26,6 @@ const routes = {
 const currentPath = ref(window.location.hash);
 
 window.addEventListener("hashchange", () => {
-  console.log(window.location.hash);
   currentPath.value = window.location.hash;
 });
 
@@ -57,6 +56,9 @@ const currentView = computed(() => {
   /** Pallete */
   --palette-black: #000;
   --palette-white: #fff;
+  --palette-primary: #eeaf61;
+  --palette-secondary: #3c557c;
+  --palette-tertiary: #00c5ff;
 }
 
 * {
@@ -77,7 +79,7 @@ body {
 
 #nav-bar {
   width: 100vw;
-  background: var(--palette-black);
+  background: var(--palette-secondary);
   display: flex;
   flex-direction: row;
   justify-content: center;

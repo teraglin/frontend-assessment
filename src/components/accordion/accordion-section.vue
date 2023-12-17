@@ -32,7 +32,7 @@ export default {
 .accordion__section {
 }
 .accordion__section__title {
-  background: var(--palette-black);
+  background: var(--palette-primary);
   color: var(--palette-white);
   padding: 0 10px;
   margin: 0;

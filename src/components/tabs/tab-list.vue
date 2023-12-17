@@ -55,7 +55,7 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(--palette-black);
+  background: var(--palette-primary);
 }
 
 .tabs__content {

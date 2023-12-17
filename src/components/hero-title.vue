@@ -27,9 +27,19 @@ export default {
   max-height: 650px; /* Look at removing this */
   height: 650px;
   overflow: hidden;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 .hero__image {
-  position: absolute;
+  position: relative;
   top: 0;
 }
 .hero__image--mobile {
@@ -58,6 +68,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  z-index: 3;
 }
 .hero-content__title {
   margin: 0;
