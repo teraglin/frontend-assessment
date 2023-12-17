@@ -1,17 +1,17 @@
 <template>
-  <div id="tab" v-on:click="handleTabClick">
-    <img class="tab__image" :src="image" />
-    <div class="tab__content" v-html="content" v-show="showContent"></div>
-    <tab-button :href="href">Read more</tab-button>
+  <div id="card" v-on:click="handleCardClick">
+    <img class="card__image" :src="image" />
+    <div class="card__content" v-html="content" v-show="showContent"></div>
+    <card-button :href="href">Read more</card-button>
   </div>
 </template>
 
 <script>
-import TabButton from "../buttons/tab-button.vue";
+import CardButton from "../buttons/card-button.vue";
 export default {
-  name: "TabComponent",
+  name: "CardComponent",
   components: {
-    TabButton,
+    CardButton
   },
   props: {
     title: String,
@@ -19,19 +19,19 @@ export default {
     image: String,
     href: String,
     index: Number,
-    showContent: Boolean,
+    showContent: Boolean
   },
   methods: {
-    handleTabClick() {
-      this.$emit("new-selected-tab", this.index);
-    },
+    handleCardClick() {
+      this.$emit("new-selected-card", this.index);
+    }
   },
-  computed: {},
+  computed: {}
 };
 </script>
 
 <style>
-#tab {
+#card {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
@@ -51,14 +51,14 @@ export default {
     transition: box-shadow 0s linear;
   }
 }
-.tab__image {
+.card__image {
   width: 100%;
   max-width: 400px;
 }
-.tab__content > * {
+.card__content > * {
   margin: 0;
 }
-.tab__content > p {
+.card__content > p {
   text-align: center;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <a
-    id="tab-button"
+    id="card-button"
     :target="target"
     rel="noopener noreferrer"
     :href="checkHref"
@@ -11,22 +11,22 @@
 
 <script>
 export default {
-  name: "TabButton",
+  name: "CardButton",
   props: {
     target: String,
-    href: String,
+    href: String
   },
   methods: {},
   computed: {
     checkHref() {
       return this.href ? this.href : "#";
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style>
-#tab-button {
+#card-button {
   padding: 10px 20px;
   border: 3px solid var(--palette-black);
   background: var(--palette-white);

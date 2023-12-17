@@ -1,55 +1,56 @@
-<template>
-  <hero-title
-    title="Hello Developer"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    :mobileImage="mobileHeroImage"
-    :desktopImage="desktopHeroImage"
-  ></hero-title>
-  <tabs-container :tabs="tabsData" :defaultImage="tabImage"></tabs-container>
-</template>
+<script setup>
+import { ref, computed } from "vue";
+import HomePage from "./routes/home-page.vue";
+import ExerciseOne from "./routes/exercise-1.vue";
+import ExerciseTwo from "./routes/exercise-2.vue";
+import NotFound from "./routes/404-page.vue";
 
-<script>
-import HeroTitle from "./components/hero-title.vue";
-import TabsContainer from "./components/tabs/tabs-container.vue";
-
-export default {
-  name: "App",
-  components: {
-    HeroTitle,
-    TabsContainer,
+const routes = {
+  "/": {
+    component: HomePage,
+    href: "#/",
+    name: "Home",
   },
-  data() {
-    return {
-      tabsDataFile: "data.json",
-      mobileHeroImageFile: "1920x650.png",
-      desktopHeroImageFile: "600x600.png",
-      tabImageFile: "400x300.png",
-    };
+  "/exercise-1": {
+    component: ExerciseOne,
+    href: "#/exercise-1",
+    name: "Exercise 1",
   },
-  methods: {
-    getImage(image) {
-      return require("@/assets/" + image);
-    },
-    getData(data) {
-      return require("@/data/" + data);
-    },
-  },
-  computed: {
-    mobileHeroImage() {
-      return this.getImage(this.mobileHeroImageFile);
-    },
-    desktopHeroImage() {
-      return this.getImage(this.desktopHeroImageFile);
-    },
-    tabImage() {
-      return this.getImage(this.tabImageFile);
-    },
-    tabsData() {
-      return this.getData(this.tabsDataFile);
-    },
+  "/exercise-2": {
+    component: ExerciseTwo,
+    href: "#/exercise-2",
+    name: "Exercise 2",
   },
 };
+
+const currentPath = ref(window.location.hash);
+
+window.addEventListener("hashchange", () => {
+  console.log(window.location.hash);
+  currentPath.value = window.location.hash;
+});
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || "/"].component || NotFound;
+});
 </script>
+
+<template>
+  <nav id="nav-bar">
+    <ul class="nav-bar__list">
+      <li
+        class="nav-bar__list-item"
+        v-for="(route, index) in routes"
+        :key="index"
+      >
+        <a :href="route.href">
+          {{ route.name }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <component :is="currentView" />
+</template>
 
 <style>
 :root {
@@ -67,5 +68,28 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--palette-black);
   margin: 0;
+}
+
+#nav-bar {
+  width: 100vw;
+  background: var(--palette-black);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-bar__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-bar__list-item > a {
+  color: var(--palette-white);
+  text-decoration: none;
 }
 </style>
