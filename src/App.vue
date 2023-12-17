@@ -7,7 +7,6 @@
   ></hero-title>
   <tabs-container :tabs="tabsData" :defaultImage="tabImage"></tabs-container>
 </template>
-<!-- TODO: add mobile image -->
 
 <script>
 import HeroTitle from "./components/hero-title.vue";
