@@ -26,13 +26,35 @@ export default {
 
 <style>
 .tabs__list__section {
+  position: relative;
   padding: 0px 10px;
-  background: var(--palette-black);
   color: var(--palette-white);
-  transition: background 0.2s linear;
-  &[selected="true"] {
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.1s linear;
+  &::after {
+    position: absolute;
+    content: "";
+    border-radius: 50px;
+    top: 50%;
+    left: 50%;
+    width: 0px;
+    height: 0px;
     background: var(--palette-white);
+    z-index: -1;
+    transition: width 0.1s linear, height 0.1s linear, top 0.1s linear,
+      left 0.1s linear;
+  }
+  &[selected="true"] {
     color: var(--palette-black);
+    &::after {
+      top: -25%;
+      left: -25%;
+      width: 150%;
+      height: 150%;
+    }
   }
 }
 </style>

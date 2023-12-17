@@ -1,6 +1,6 @@
 <template>
   <hero-title
-    title="Hello Developer"
+    title="Hello Developer!"
     subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     :mobileImage="mobileHeroImage"
     :desktopImage="desktopHeroImage"
@@ -24,8 +24,8 @@ export default {
   data() {
     return {
       cardsDataFile: "cards-data.json",
-      mobileHeroImageFile: "1920x650.png",
-      desktopHeroImageFile: "600x600.png",
+      desktopHeroImageFile: "1920x650.png",
+      mobileHeroImageFile: "600x600.png",
       cardImageFile: "400x300.png"
     };
   },

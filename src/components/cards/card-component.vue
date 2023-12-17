@@ -1,7 +1,7 @@
 <template>
-  <div id="card" v-on:click="handleCardClick">
+  <div id="card">
     <img class="card__image" :src="image" />
-    <div class="card__content" v-html="content" v-show="showContent"></div>
+    <div class="card__content" v-html="content"></div>
     <card-button :href="href">Read more</card-button>
   </div>
 </template>
@@ -14,17 +14,9 @@ export default {
     CardButton
   },
   props: {
-    title: String,
     content: String,
     image: String,
-    href: String,
-    index: Number,
-    showContent: Boolean
-  },
-  methods: {
-    handleCardClick() {
-      this.$emit("new-selected-card", this.index);
-    }
+    href: String
   },
   computed: {}
 };
@@ -41,15 +33,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
-  cursor: pointer;
-  transition: box-shadow 0.2s ease-in-out;
-  &:hover {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  }
-  &:active {
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0s linear;
-  }
 }
 .card__image {
   width: 100%;
@@ -57,6 +40,9 @@ export default {
 }
 .card__content > * {
   margin: 0;
+  width: 400px;
+  height: 260px;
+  font-size: 24px;
 }
 .card__content > p {
   text-align: center;

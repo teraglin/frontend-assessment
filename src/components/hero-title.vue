@@ -3,8 +3,8 @@
     <img class="hero__image hero__image--mobile" :src="mobileImage" />
     <img class="hero__image hero__image--desktop" :src="desktopImage" />
     <div class="hero-content">
-      <h1 class="hero__title">{{ title }}</h1>
-      <p class="hero__subtitle">{{ subtitle }}</p>
+      <h1 class="hero-content__title">{{ title }}</h1>
+      <p class="hero-content__subtitle">{{ subtitle }}</p>
     </div>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
     title: String,
     subtitle: String,
     mobileImage: String,
-    desktopImage: String,
-  },
+    desktopImage: String
+  }
 };
 </script>
 
@@ -25,20 +25,25 @@ export default {
 #hero {
   position: relative;
   max-height: 650px; /* Look at removing this */
+  height: 650px;
+  overflow: hidden;
 }
 .hero__image {
-  max-width: 1920px;
-  width: 100%;
-  margin: 0 auto;
+  position: absolute;
+  top: 0;
 }
 .hero__image--mobile {
+  width: 600px;
   display: none;
-  @media (min-width: 600px) {
+  margin-left: calc(50vw - (600px / 2));
+  @media (max-width: 600px) {
     display: block;
   }
 }
 .hero__image--desktop {
-  @media (min-width: 600px) {
+  width: 1920px;
+  margin-left: calc(50vw - (1920px / 2));
+  @media (max-width: 600px) {
     display: none;
   }
 }
@@ -56,8 +61,19 @@ export default {
 }
 .hero-content__title {
   margin: 0;
+  font-size: 80px;
+  text-align: center;
+  @media (max-width: 600px) {
+    padding-bottom: 10px;
+    width: 500px;
+  }
 }
 .hero-content__subtitle {
+  text-align: center;
   margin: 0;
+  font-size: 36px;
+  @media (max-width: 600px) {
+    width: 500px;
+  }
 }
 </style>

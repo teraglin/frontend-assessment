@@ -5,9 +5,6 @@
       :key="index"
       :content="card.content"
       :image="getImage"
-      :index="index"
-      :showContent="index === selectedCard"
-      @new-selected-card="updateSelectedCard"
     ></card-component>
   </div>
 </template>
@@ -21,28 +18,11 @@ export default {
   },
   props: {
     cards: Array,
-    defaultImage: String,
-    index: Number
-  },
-  data() {
-    return {
-      selectedCard: 0
-    };
-  },
-  methods: {
-    updateSelectedCard(index) {
-      return (this.selectedCard = index);
-    },
-    handleShowContent(index) {
-      return index === this.selectedCard;
-    }
+    defaultImage: String
   },
   computed: {
     getImage() {
       return this.cards.image ? this.cards.image : this.defaultImage;
-    },
-    showContent(index) {
-      return this.handleShowContent(index);
     }
   }
 };
