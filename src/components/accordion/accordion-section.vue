@@ -1,12 +1,12 @@
 <template>
   <li class="accordion__section">
-    <h1 class="accordion__section__title" v-on:click="handleTabClick">
+    <h1 class="accordion__section__title" v-on:click="handleTabClick(index)">
       {{ title }}
     </h1>
     <div
       v-show="index === selectedTab"
       class="accordion__section__content"
-      v-html="content"
+      v-html="toggle ? content : `<p class='accordion__empty-display'></p>`"
     ></div>
   </li>
 </template>
@@ -20,9 +20,19 @@ export default {
     index: Number,
     selectedTab: Number
   },
+  data() {
+    return {
+      toggle: true
+    };
+  },
   methods: {
-    handleTabClick() {
-      this.$emit("new-selected-tab", this.index);
+    handleTabClick(index) {
+      if (index === this.selectedTab) {
+        this.toggle = !this.toggle;
+        return;
+      }
+      this.toggle = true;
+      return this.$emit("new-selected-tab", this.index);
     }
   }
 };
@@ -39,10 +49,15 @@ export default {
   cursor: pointer;
 }
 .accordion__section__content {
-  padding: 10px 20px;
+  & > * {
+    padding: 10px 20px;
+  }
   & > ul,
   ol {
     margin-bottom: 10px;
   }
+}
+.accordion__empty-display {
+  display: none;
 }
 </style>

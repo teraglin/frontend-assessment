@@ -7,10 +7,19 @@
         :index="index"
         :selected-tab="selectedTab"
         :key="index"
+        :toggle="toggle"
         @new-selected-tab="emitSelectedTab"
+        @set-toggle="updateToggle"
       ></tab-section>
     </ul>
-    <div class="tabs__content" v-html="tabs[selectedTab].content"></div>
+    <div
+      class="tabs__content"
+      v-html="
+        toggle
+          ? tabs[selectedTab].content
+          : `<p class='tabs__empty-display'></p>`
+      "
+    ></div>
   </div>
 </template>
 
@@ -26,12 +35,24 @@ export default {
     tabs: Array,
     selectedTab: Number
   },
+  data() {
+    return {
+      toggle: true
+    };
+  },
   methods: {
-    handleShowContent(index) {
-      return index === this.selectedTab;
-    },
     emitSelectedTab(index) {
+      if (index === this.selectedTab) {
+        this.toggle = !this.toggle;
+      } else {
+        this.toggle = true;
+      }
+      console.log(this.toggle);
       this.$emit("new-selected-tab", index);
+    },
+    updateToggle(toggle) {
+      console.log(toggle);
+      this.toggle = toggle;
     }
   }
 };
@@ -60,5 +81,9 @@ export default {
 
 .tabs__content {
   padding: 0 20px;
+}
+
+.tabs__empty-display {
+  display: none;
 }
 </style>

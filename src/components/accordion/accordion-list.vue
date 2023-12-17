@@ -24,9 +24,6 @@ export default {
     selectedTab: Number
   },
   methods: {
-    handleShowContent(index) {
-      return index === this.selectedTab;
-    },
     emitSelectedTab(index) {
       this.$emit("new-selected-tab", index);
     }
@@ -39,5 +36,6 @@ export default {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 </style>
