@@ -9,18 +9,18 @@ const routes = {
   "/": {
     component: HomePage,
     href: "#/",
-    name: "Home",
+    name: "Home"
   },
   "/exercise-1": {
     component: ExerciseOne,
     href: "#/exercise-1",
-    name: "Exercise 1",
+    name: "Exercise 1"
   },
   "/exercise-2": {
     component: ExerciseTwo,
     href: "#/exercise-2",
-    name: "Exercise 2",
-  },
+    name: "Exercise 2"
+  }
 };
 
 const currentPath = ref(window.location.hash);
@@ -54,6 +54,7 @@ const currentView = computed(() => {
 
 <style>
 :root {
+  /** Pallete */
   --palette-black: #000;
   --palette-white: #fff;
 }
