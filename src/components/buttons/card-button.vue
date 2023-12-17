@@ -1,22 +1,32 @@
 <template>
-  <a id="tab-button" :target="target" rel="noopener noreferrer" :href="href">
+  <a
+    id="card-button"
+    :target="target"
+    rel="noopener noreferrer"
+    :href="checkHref"
+  >
     <slot></slot>
   </a>
 </template>
 
 <script>
 export default {
-  name: "TabButton",
+  name: "CardButton",
   props: {
     target: String,
-    href: String,
+    href: String
   },
   methods: {},
+  computed: {
+    checkHref() {
+      return this.href ? this.href : "#";
+    }
+  }
 };
 </script>
 
 <style>
-#tab-button {
+#card-button {
   padding: 10px 20px;
   border: 3px solid var(--palette-black);
   background: var(--palette-white);
@@ -24,5 +34,7 @@ export default {
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  text-decoration: none;
+  color: var(--palette-black);
 }
 </style>
