@@ -19,7 +19,6 @@ export default {
     desktopImage: String,
   },
 };
-console.log("hello");
 </script>
 
 <style>
@@ -30,6 +29,7 @@ console.log("hello");
 .hero__image {
   max-width: 1920px;
   width: 100%;
+  margin: 0 auto;
 }
 .hero__image--mobile {
   display: none;
@@ -48,7 +48,7 @@ console.log("hello");
   left: 0;
   width: 100%;
   height: 100%;
-  color: #fff;
+  color: var(--palette-white);
   display: flex;
   align-items: center;
   justify-content: center;
