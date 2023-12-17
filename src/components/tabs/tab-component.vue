@@ -2,17 +2,22 @@
   <div id="tab">
     <img class="tab__image" :src="image" />
     <div class="tab__content" v-html="content"></div>
-    <button class="tab__button">Read More</button>
+    <tab-button :href="href">Read more</tab-button>
   </div>
 </template>
 
 <script>
+import TabButton from "../buttons/tab-button.vue";
 export default {
   name: "TabComponent",
+  components: {
+    TabButton,
+  },
   props: {
     title: String,
     content: String,
     image: String,
+    href: String,
   },
 };
 </script>
@@ -24,9 +29,12 @@ export default {
   padding: 20px;
   min-width: 400px;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 .tab__image {
-  background: grey;
   width: 100%;
   max-width: 400px;
 }

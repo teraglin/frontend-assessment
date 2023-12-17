@@ -19,7 +19,6 @@ export default {
     desktopImage: String,
   },
 };
-console.log("hello");
 </script>
 
 <style>
@@ -49,7 +48,7 @@ console.log("hello");
   left: 0;
   width: 100%;
   height: 100%;
-  color: #fff;
+  color: var(--palette-white);
   display: flex;
   align-items: center;
   justify-content: center;

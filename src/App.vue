@@ -5,7 +5,7 @@
     :mobileImage="mobileHeroImage"
     :desktopImage="desktopHeroImage"
   ></hero-title>
-  <tabs-container :tabs="tabsData" :image="tabImage"></tabs-container>
+  <tabs-container :tabs="tabsData" :defaultImage="tabImage"></tabs-container>
 </template>
 <!-- TODO: add mobile image -->
 
@@ -29,11 +29,9 @@ export default {
   },
   methods: {
     getImage(image) {
-      // return console.log("a", image);
       return require("@/assets/" + image);
     },
     getData(data) {
-      // return console.log("aa", data);
       return require("@/data/" + data);
     },
   },
@@ -55,6 +53,11 @@ export default {
 </script>
 
 <style>
+:root {
+  --palette-black: #000;
+  --palette-white: #fff;
+}
+
 body {
   margin: 0;
 }
@@ -63,7 +66,7 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #000;
+  color: var(--palette-black);
   margin: 0;
 }
 </style>

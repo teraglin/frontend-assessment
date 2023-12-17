@@ -5,7 +5,7 @@
       :key="index"
       :title="tab.title"
       :content="tab.content"
-      :image="image"
+      :image="getImage"
     ></tab-component>
   </div>
 </template>
@@ -19,7 +19,12 @@ export default {
   },
   props: {
     tabs: Array,
-    image: String,
+    defaultImage: String,
+  },
+  computed: {
+    getImage() {
+      return this.tabs.image ? this.tabs.image : this.defaultImage;
+    },
   },
 };
 </script>
