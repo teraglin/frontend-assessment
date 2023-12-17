@@ -1,5 +1,10 @@
 <template>
-  <a id="tab-button" :target="target" rel="noopener noreferrer" :href="href">
+  <a
+    id="tab-button"
+    :target="target"
+    rel="noopener noreferrer"
+    :href="checkHref"
+  >
     <slot></slot>
   </a>
 </template>
@@ -12,6 +17,11 @@ export default {
     href: String,
   },
   methods: {},
+  computed: {
+    checkHref() {
+      return this.href ? this.href : "#";
+    },
+  },
 };
 </script>
 
@@ -24,5 +34,7 @@ export default {
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  text-decoration: none;
+  color: var(--palette-black);
 }
 </style>
