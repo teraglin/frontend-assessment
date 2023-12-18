@@ -36,7 +36,6 @@ export default {
       return require("@/data/" + data);
     },
     updateSelectedTab(index) {
-      // return console.log(index);
       return (this.selectedTab = index);
     }
   },

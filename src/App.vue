@@ -4,6 +4,7 @@ import HomePage from "./routes/home-page.vue";
 import ExerciseOne from "./routes/exercise-1.vue";
 import ExerciseTwo from "./routes/exercise-2.vue";
 import NotFound from "./routes/404-page.vue";
+import NavBar from "./components/navigation/nav-bar.vue";
 
 const routes = {
   "/": {
@@ -35,19 +36,7 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <nav id="nav-bar">
-    <ul class="nav-bar__list">
-      <li
-        class="nav-bar__list-item"
-        v-for="(route, index) in routes"
-        :key="index"
-      >
-        <a :href="route.href">
-          {{ route.name }}
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <nav-bar :routes="routes"></nav-bar>
   <component :is="currentView" />
 </template>
 
@@ -56,8 +45,8 @@ const currentView = computed(() => {
   /** Pallete */
   --palette-black: #000;
   --palette-white: #fff;
-  --palette-primary: #eeaf61;
-  --palette-secondary: #3c557c;
+  --palette-primary: #3c557c;
+  --palette-secondary: #eeaf61;
   --palette-tertiary: #00c5ff;
 }
 
@@ -75,28 +64,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--palette-black);
   margin: 0;
-}
-
-#nav-bar {
-  width: 100vw;
-  background: var(--palette-secondary);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-bar__list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  gap: 30px;
-}
-
-.nav-bar__list-item > a {
-  color: var(--palette-white);
-  text-decoration: none;
 }
 </style>

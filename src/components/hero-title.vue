@@ -24,9 +24,11 @@ export default {
 <style>
 #hero {
   position: relative;
-  max-height: 650px; /* Look at removing this */
   height: 650px;
   overflow: hidden;
+  @media (max-width: 600px) {
+    height: 600px;
+  }
   &::after {
     position: absolute;
     content: "";
@@ -34,6 +36,7 @@ export default {
     left: 0;
     z-index: 2;
     width: 100%;
+    max-width: 1920px;
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
   }
@@ -85,6 +88,12 @@ export default {
   font-size: 36px;
   @media (max-width: 600px) {
     width: 500px;
+  }
+}
+
+@media (min-width: 1920px) {
+  #hero::after {
+    left: calc(50vw - (1920px / 2));
   }
 }
 </style>

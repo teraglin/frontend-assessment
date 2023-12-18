@@ -14,21 +14,12 @@ export default {
   props: {
     title: String,
     index: Number,
-    selectedTab: Number,
-    toggle: Boolean
+    selectedTab: Number
   },
   methods: {
-    handleTabClick(index) {
-      if (index === this.selectedTab) {
-        console.log("hello");
-        this.$emit("set-toggle", !this.toggle);
-        return;
-      }
+    handleTabClick() {
       return this.$emit("new-selected-tab", this.index);
     }
-    // handleTabClick() {
-    //   this.$emit("new-selected-tab", this.index);
-    // }
   }
 };
 </script>

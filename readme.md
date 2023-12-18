@@ -1,46 +1,82 @@
-## Introduction
+# Frontend Assessment - Aidan Kirvan
 
-Thanks for taking the time to complete this frontend technical assessment. We will be focusing on software quality (scalability, readability, maintainability, etc.) and your eye for detail. You may include any libraries, but Vue.js is preferred and jQuery is not recommended. Along with following best practices, bonus points for following our [coding guidelines](https://github.com/mindarc/frontend-assessment/wiki/Coding-guidelines).
+aidankirvan@gmail.com
+[aidankirvan.com](https://aidankirvan.com)
 
-## Exercise 1
+## Installation
 
-Build a responsive page based on the designs.
+| Node Version | package manager | Framework |
+| ------------ | --------------- | --------- |
+| v20.10.0     | Yarn            | Vue 3     |
 
-##### Requirements
+1. Install
 
-1. Match the designs exactly.
-2. Needs to be responsive.
+```bash
+yarn install
+```
 
-##### Designs
+2. Run
 
-- exercise1-desktop.png
-- exercise1-mobile.png
+```bash
+yarn serve
+```
 
-##### Assets
+## Directory Tree - (excluding node_modules)
 
-- Desktop banner - https://via.placeholder.com/1920x650
-- Mobile banner - https://via.placeholder.com/600x600
-- Content images - https://via.placeholder.com/400x300
+```
+.
+├── assessment-assets
+│   ├── data.json
+│   ├── exercise1-desktop.png
+│   ├── exercise1-mobile.png
+│   └── readme.md
+├── babel.config.js
+├── jsconfig.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── readme.md
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── 1920x650.png
+│   │   ├── 400x300.png
+│   │   ├── 600x600.png
+│   │   └── logo.png
+│   ├── components
+│   │   ├── accordion
+│   │   │   ├── accordion-list.vue
+│   │   │   └── accordion-section.vue
+│   │   ├── buttons
+│   │   │   └── card-button.vue
+│   │   ├── cards
+│   │   │   ├── card-component.vue
+│   │   │   └── cards-container.vue
+│   │   ├── hero-title.vue
+│   │   ├── navigation
+│   │   │   └── nav-bar.vue
+│   │   └── tabs
+│   │       ├── tab-list.vue
+│   │       └── tab-section.vue
+│   ├── data
+│   │   ├── cards-data.json
+│   │   └── tabs-data.json
+│   ├── main.js
+│   └── routes
+│       ├── 404-page.vue
+│       ├── exercise-1.vue
+│       ├── exercise-2.vue
+│       └── home-page.vue
+├── vue.config.js
+└── yarn.lock
 
-## Exercise 2
+13 directories, 33 files
+```
 
-Read the `data.json` file and display the data as tabs on desktop and an accordion on mobile.
+# Explain why the result of `('b' + 'a' + + 'a' + 'a').toLowerCase()` is `banana`.
 
-##### Requirements
-
-1. Display data in tabs on desktop.
-2. Display data in an accordion on mobile.
-3. Only 1 accordion/tab should be open at a time.
-4. Open the first accordion/tab on load.
-5. If the open accordion is selected, close it.
-
-###### Bonus points
-
-- Improve the user experience with meaningful animations/transitions.
-- Design and styling.
-- Explain why the result of `('b' + 'a' + + 'a' + 'a').toLowerCase()` is `banana`.
-
-A: A `+` symbol following or proceedng any String value will concatenate those two values. A `+` symbol on its own before a value will convert that string into a number.
+A `+` symbol following or proceedng any String value will concatenate those two values. A `+` symbol on its own before a value will convert that string into a number.
 
 ```javascript
 // eg.
@@ -74,8 +110,19 @@ Additionally, if a `+` is converting a value that **is not** a numerical value i
 
 So because there are two `+` symbols before the second 'a' String value, it will be converted into a number and concatenated. And seeing as 'a' is not a numerial value, the concatenated value will be `NaN`
 
-Therefore, 'b' + 'a' + NaN + 'a' = 'baNaNa'.
+Therefore, 'b' + 'a' + NaN + 'a' = 'baNaNa'. And if you add the `toLowerCase()` you will return a new string that converts all uppercase letters to lowercase: 'banana'.
 
-## Submission
+## Future considerations and improvements
 
-We recommend submitting your completed assessment as a forked repository. Please replace README content with instructions and relevant documentation.
+Considering certain time constraints, and that this is my first time using Vue.js, I thought I'd write down some notes on things that I would work on or change if I were to continue working on this assessment.
+
+- Look into moving functions out of top level components and ensure that shared logic is imported and distributed from one location at the top level.
+
+- Define breakpoint and spacing css variables.
+
+- More involved atomic structure for components and elements and modules.
+
+- More accessibility and screen reader features:
+  - alt attribute on exercise 1 images
+  - ensure active and focusable elements are not on unique elements with an id attribute
+  - language attributes for html element
